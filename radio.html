@@ -9,10 +9,18 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <script src="/jquery.js"></script>
     <script>
+      function update() {
+//        $("#nowplaying").load('nowplaying.php');
+        $.get('nowplaying.php', function(data) {
+          document.title = data;
+          document.getElementById("nowplaying").innerHTML = data;
+        });
+      }
+
       $(document).ready(function() {
-        $("#nowplaying").load('nowplaying.php');
+        update();
         var refreshId = setInterval(function() {
-          $("#nowplaying").load('nowplaying.php');
+          update();
         }, 30000);
         $.ajaxSetup({ cache: false });
       });
