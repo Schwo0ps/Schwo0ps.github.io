@@ -1,8 +1,8 @@
 <?php
 exec('mpc -q play');
 echo exec('mpc current');
-if (file_exists('scripts/pid')) {
-  exec('kill `cat scripts/pid`');
+if (file_exists('shell/pid')) {
+  exec('kill `cat shell/pid`');
 }
-exec('scripts/update > /dev/null &');
+exec('shell/update > /dev/null &');
 ?>
